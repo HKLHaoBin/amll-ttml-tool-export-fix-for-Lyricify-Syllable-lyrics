@@ -82,7 +82,7 @@ def main():
             s = s[:start] + ')' + word + '(' + s[end:]
         #print("修改后：", s)
         print(s)
-        processed_lyrics += s
+        processed_lyrics += s+'\n'
 
     # 在 issue 中添加评论
     token = os.environ['GITHUB_TOKEN']
