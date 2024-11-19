@@ -1,6 +1,6 @@
-### 仓库介绍
+### 拯救你的歌词！！！
 
-**仓库名称**: `amll-ttml-tool-export-fix-for-Lyricify-Syllable-lyrics`
+## **仓库名称**: 处理 amll-ttml-tool 导出为Lyricify Syllable 歌词时的错误纠正
 
 **描述**:  
 本仓库旨在提供一种自动化工具，用于纠正从 `amll-ttml-tool` 导出为 `Lyricify Syllable` 格式的歌词文件时可能出现的格式错误。通过解析和调整文本内容，确保歌词数据在语法和格式上符合预期。
