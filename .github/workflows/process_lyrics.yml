@@ -22,5 +22,10 @@ jobs:
       - name: Install dependencies
         run: python3 -m pip install requests
 
+      - name: Debug environment variables
+        run: printenv | grep GITHUB_TOKEN
+
       - name: Process Lyrics
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 process_lyrics.py
