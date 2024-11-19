@@ -23,11 +23,6 @@ jobs:
       - name: Install dependencies
         run: python3 -m pip install requests
 
-      - name: Debug custom secret
-        env:
-          TEST_SECRET: ${{ secrets.TEST_SECRET }}
-        run: echo "Test secret:$TEST_SECRET"
-
       - name: Debug environment variables
         run: printenv | grep GITHUB_TOKEN
 
