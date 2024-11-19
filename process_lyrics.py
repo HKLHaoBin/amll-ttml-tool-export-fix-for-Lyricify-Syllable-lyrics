@@ -35,6 +35,8 @@ def process_line(line):
 
         # 匹配并替换 "( " 为 " ("
         line = re.sub(r'\(\s+', ' (', line)
+
+
     return line
 
 def process_text(text):
@@ -58,6 +60,29 @@ def main():
     lyrics = code_blocks[0]
     # 处理歌词
     processed_lyrics = process_text(lyrics)
+
+    # 按行分割文本
+    lines = processed_lyrics.strip().split('\n')
+
+    for s in lines:
+        #print("----------------------------------------")
+        #print("原始行：", s)
+        # 修改正则表达式，匹配可能不存在的单词
+        matches = list(re.finditer(r'\)\s*(\w*)\s*\(', s))
+        #print("匹配结果：", matches)
+        if matches:
+            last_match = matches[-1]
+            word = last_match.group(1)
+            #print("匹配到的单词：", word)
+            start, end = last_match.span()
+            #print("匹配位置：", start, end)
+            # 去掉匹配模式中的空格
+            s = s[:start] + ')' + word + '(' + s[end:]
+        #print("修改后：", s)
+        print(s)
+
+        processed_lyrics = s
+
     # 在 issue 中添加评论
     token = os.environ['GITHUB_TOKEN']
     repo = os.environ['GITHUB_REPOSITORY']
