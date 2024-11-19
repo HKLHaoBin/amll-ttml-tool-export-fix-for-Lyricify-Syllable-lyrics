@@ -1,0 +1,21 @@
+name: Process Lyricify Syllable Lyrics
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  process_lyrics:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Process Lyrics
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 -m pip install requests
+          python3 process_lyrics.py
