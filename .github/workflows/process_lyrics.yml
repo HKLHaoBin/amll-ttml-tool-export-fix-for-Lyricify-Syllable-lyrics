@@ -28,5 +28,5 @@ jobs:
 
       - name: Process Lyrics
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+             GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
         run: python3 process_lyrics.py
