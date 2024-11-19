@@ -1,12 +1,8 @@
-# Trigger new workflow run
 name: Process Lyricify Syllable Lyrics
 
 on:
   issues:
     types: [opened, edited]
-
-permissions:
-  issues: write
 
 jobs:
   process_lyrics:
@@ -17,16 +13,9 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Install dependencies
-        run: python3 -m pip install requests
-
-      - name: Debug environment variables
-        run: printenv | grep GITHUB_TOKEN
-
       - name: Process Lyrics
         env:
-             GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
-        run: python3 process_lyrics.py
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 -m pip install requests
+          python3 process_lyrics.py
