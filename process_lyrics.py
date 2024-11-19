@@ -64,6 +64,8 @@ def main():
     # 按行分割文本
     lines = processed_lyrics.strip().split('\n')
 
+    processed_lyrics = ""
+
     for s in lines:
         #print("----------------------------------------")
         #print("原始行：", s)
@@ -80,8 +82,7 @@ def main():
             s = s[:start] + ')' + word + '(' + s[end:]
         #print("修改后：", s)
         print(s)
-
-        processed_lyrics = s
+        processed_lyrics += s
 
     # 在 issue 中添加评论
     token = os.environ['GITHUB_TOKEN']
