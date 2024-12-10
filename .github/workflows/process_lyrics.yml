@@ -10,6 +10,7 @@ permissions:
 jobs:
   process_lyrics:
     runs-on: ubuntu-latest
+
     steps:
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -19,9 +20,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Install Dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install PyGithub
+
       - name: Process Lyrics
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 -m pip install requests
           python3 process_lyrics.py
